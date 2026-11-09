@@ -1,0 +1,60 @@
+{
+  "name": "afnan",
+  "productName": "Afnan",
+  "version": "1.0.0",
+  "description": "Fitness, Nutrition & Private Journal for Afnan",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac"
+  },
+  "build": {
+    "appId": "com.afnan.fitnessapp",
+    "productName": "Afnan",
+    "mac": {
+      "category": "public.app-category.lifestyle",
+      "icon": "build/icon.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "title": "Install Afnan",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "files": [
+      "index.html",
+      "main.js",
+      "build/icon.png",
+      "build/icon.icns"
+    ]
+  },
+  "keywords": [
+    "fitness",
+    "gym",
+    "macros",
+    "journal"
+  ],
+  "author": "Aidan Blakeley",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^34.2.0",
+    "electron-builder": "^25.1.8"
+  }
+}

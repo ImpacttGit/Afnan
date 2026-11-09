@@ -1,0 +1,2559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Afnan's Daily Glow • Fitness & Journal</title>
+  <style>
+    :root {
+      --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --bg-gradient: linear-gradient(135deg, #fff1f2 0%, #fdf4ff 50%, #f0fdf4 100%);
+      --bg-main: #faf5f8;
+      --card-bg: rgba(255, 255, 255, 0.88);
+      --card-border: rgba(244, 114, 182, 0.2);
+      --card-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.05), 0 8px 10px -6px rgba(225, 29, 72, 0.04);
+      --text-main: #1f2937;
+      --text-muted: #6b7280;
+      --text-light: #9ca3af;
+      --primary: #f43f5e;
+      --primary-hover: #e11d48;
+      --primary-soft: #ffe4e6;
+      --accent: #ec4899;
+      --accent-soft: #fce7f3;
+      --success: #10b981;
+      --success-soft: #d1fae5;
+      --warning: #f59e0b;
+      --warning-soft: #fef3c7;
+      --info: #8b5cf6;
+      --info-soft: #ede9fe;
+      --input-bg: #ffffff;
+      --input-border: #fbcfe8;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Minimalist Aesthetic Grey (Default / Clean Studio) */
+    [data-theme="grey"] {
+      --bg-gradient: linear-gradient(135deg, #f4f4f5 0%, #e4e4e7 50%, #f4f4f5 100%);
+      --bg-main: #f4f4f5;
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --card-border: rgba(161, 161, 170, 0.35);
+      --card-shadow: 0 10px 25px -5px rgba(24, 24, 27, 0.06), 0 8px 10px -6px rgba(24, 24, 27, 0.04);
+      --text-main: #18181b;
+      --text-muted: #52525b;
+      --text-light: #a1a1aa;
+      --primary: #27272a;
+      --primary-hover: #09090b;
+      --primary-soft: #e4e4e7;
+      --accent: #52525b;
+      --accent-soft: #f4f4f5;
+      --input-bg: #ffffff;
+      --input-border: #d4d4d8;
+    }
+    [data-theme="grey"] .brand-icon {
+      background: linear-gradient(135deg, #52525b, #18181b);
+      box-shadow: 0 4px 12px rgba(24, 24, 27, 0.25);
+    }
+    [data-theme="grey"] .tab-btn.active {
+      background: #27272a;
+      box-shadow: 0 4px 10px rgba(39, 39, 42, 0.25);
+    }
+    [data-theme="grey"] .greeting-card {
+      background: linear-gradient(135deg, rgba(228, 228, 231, 0.65), rgba(244, 244, 245, 0.85));
+      border: 1px solid rgba(161, 161, 170, 0.4);
+    }
+
+    /* Charcoal / Dark Slate Grey */
+    [data-theme="dark-grey"] {
+      --bg-gradient: linear-gradient(135deg, #18181b 0%, #27272a 50%, #09090b 100%);
+      --bg-main: #18181b;
+      --card-bg: rgba(39, 39, 42, 0.88);
+      --card-border: rgba(113, 113, 122, 0.35);
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      --text-main: #fafafa;
+      --text-muted: #a1a1aa;
+      --text-light: #71717a;
+      --primary: #f4f4f5;
+      --primary-hover: #ffffff;
+      --primary-soft: rgba(244, 244, 245, 0.15);
+      --accent: #d4d4d8;
+      --accent-soft: rgba(212, 212, 216, 0.15);
+      --input-bg: #27272a;
+      --input-border: #3f3f46;
+    }
+    [data-theme="dark-grey"] .brand-icon {
+      background: linear-gradient(135deg, #71717a, #27272a);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+    [data-theme="dark-grey"] .tab-btn.active {
+      background: #f4f4f5;
+      color: #18181b;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    }
+    [data-theme="dark-grey"] .btn-primary {
+      background: #f4f4f5;
+      color: #18181b;
+    }
+    [data-theme="dark-grey"] .btn-primary:hover {
+      background: #ffffff;
+    }
+    [data-theme="dark-grey"] .greeting-card {
+      background: linear-gradient(135deg, rgba(39, 39, 42, 0.65), rgba(24, 24, 27, 0.85));
+      border: 1px solid rgba(113, 113, 122, 0.4);
+    }
+
+    /* Dark Mode Theme */
+    [data-theme="dark"] {
+      --bg-gradient: linear-gradient(135deg, #181119 0%, #171120 50%, #0d1617 100%);
+      --bg-main: #120e15;
+      --card-bg: rgba(28, 22, 33, 0.85);
+      --card-border: rgba(244, 63, 94, 0.22);
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --text-light: #6b7280;
+      --primary: #fb7185;
+      --primary-hover: #f43f5e;
+      --primary-soft: rgba(244, 63, 94, 0.2);
+      --accent: #f472b6;
+      --accent-soft: rgba(236, 72, 153, 0.2);
+      --input-bg: #231b2a;
+      --input-border: #3d2a45;
+    }
+
+    /* Lavender Theme */
+    [data-theme="lavender"] {
+      --bg-gradient: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #e0e7ff 100%);
+      --bg-main: #f5f3ff;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-border: rgba(167, 139, 250, 0.3);
+      --primary: #8b5cf6;
+      --primary-hover: #7c3aed;
+      --primary-soft: #ede9fe;
+      --accent: #a855f7;
+      --accent-soft: #f3e8ff;
+      --input-border: #ddd6fe;
+    }
+
+    /* Matcha / Sage Theme */
+    [data-theme="sage"] {
+      --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #fefce8 100%);
+      --bg-main: #f2f7f4;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-border: rgba(52, 211, 153, 0.3);
+      --primary: #059669;
+      --primary-hover: #047857;
+      --primary-soft: #d1fae5;
+      --accent: #10b981;
+      --accent-soft: #ecfdf5;
+      --input-border: #a7f3d0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
+
+    /* Header & Navigation */
+    header {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      -webkit-app-region: drag;
+    }
+
+    .header-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 14px 20px 14px 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand, .nav-tabs, button, input, select, textarea {
+      -webkit-app-region: no-drag;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
+      flex-shrink: 0;
+    }
+
+    .brand-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .brand-text h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .brand-text p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 6px;
+      background: rgba(0, 0, 0, 0.04);
+      padding: 4px;
+      border-radius: var(--radius-full);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+
+    [data-theme="dark"] .nav-tabs {
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: var(--radius-full);
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .tab-btn svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(244, 63, 94, 0.25);
+    }
+
+    .tab-btn:hover:not(.active) {
+      color: var(--text-main);
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 20px 80px;
+      flex: 1;
+    }
+
+    .view-section {
+      display: none;
+      animation: fadeIn 0.25s ease-out forwards;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Common Card Styles */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 20px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Buttons & Form controls */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 9px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      text-decoration: none;
+      font-family: inherit;
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(244, 63, 94, 0.25);
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+    .btn-secondary:hover {
+      filter: brightness(0.96);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+    }
+    .btn-outline:hover {
+      background: rgba(0,0,0,0.03);
+    }
+
+    .btn-danger {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+    .btn-danger:hover {
+      background: #fecaca;
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-icon {
+      padding: 8px;
+      border-radius: var(--radius-md);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--input-border);
+      background: var(--input-bg);
+      color: var(--text-main);
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.15);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+
+    /* Banner / Welcome */
+    .greeting-card {
+      background: linear-gradient(135deg, rgba(254, 205, 211, 0.45), rgba(253, 230, 138, 0.25));
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    [data-theme="dark"] .greeting-card {
+      background: linear-gradient(135deg, rgba(76, 29, 44, 0.4), rgba(49, 34, 18, 0.3));
+    }
+
+    .greeting-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .greeting-card h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .greeting-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* ============================================================
+       1. GYM TRACKER STYLES
+       ============================================================ */
+    .workout-creator {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .exercise-entry {
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px dashed var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    [data-theme="dark"] .exercise-entry {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .exercise-entry .remove-ex-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 4px;
+    }
+    .exercise-entry .remove-ex-btn:hover {
+      color: #ef4444;
+    }
+
+    .set-row {
+      display: grid;
+      grid-template-columns: 45px 1fr 1fr 40px;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .set-badge {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-align: center;
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 4px 6px;
+      border-radius: var(--radius-sm);
+    }
+
+    .set-delete-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .set-delete-btn:hover {
+      color: #ef4444;
+    }
+
+    /* Workout Log Feed */
+    .workout-card {
+      border-left: 4px solid var(--primary);
+      transition: var(--transition);
+    }
+    .workout-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .workout-meta {
+      display: flex;
+      gap: 14px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .workout-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .exercise-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .exercise-table th {
+      text-align: left;
+      color: var(--text-muted);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 6px 10px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .exercise-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .pr-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: #fef3c7;
+      color: #d97706;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      margin-left: 8px;
+    }
+    [data-theme="dark"] .pr-pill {
+      background: #78350f;
+      color: #fde68a;
+    }
+
+    /* ============================================================
+       2. CALORIES & MACRO TRACKER STYLES
+       ============================================================ */
+    .macro-dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .macro-metric {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .macro-metric::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--metric-color, var(--primary));
+    }
+
+    .metric-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .metric-value {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+
+    .metric-sub {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: 4px;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(0, 0, 0, 0.06);
+      border-radius: var(--radius-full);
+      margin-top: 8px;
+      overflow: hidden;
+    }
+    [data-theme="dark"] .progress-bar-container {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      background: var(--metric-color, var(--primary));
+      width: 0%;
+      transition: width 0.4s ease-out;
+    }
+
+    .meals-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .meal-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
+    .meal-card:hover {
+      border-color: var(--primary);
+    }
+
+    .meal-type-pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .meal-type-breakfast { background: #fef3c7; color: #b45309; }
+    .meal-type-lunch { background: #dbeafe; color: #1d4ed8; }
+    .meal-type-dinner { background: #fce7f3; color: #be185d; }
+    .meal-type-snack { background: #ede9fe; color: #6d28d9; }
+
+    .meal-macros-badges {
+      display: flex;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+      flex-wrap: wrap;
+    }
+
+    .macro-tag {
+      font-weight: 600;
+    }
+    .macro-p { color: #f43f5e; }
+    .macro-c { color: #3b82f6; }
+    .macro-f { color: #eab308; }
+
+    /* ============================================================
+       3. NOTES STYLES
+       ============================================================ */
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .note-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 160px;
+      transition: var(--transition);
+      position: relative;
+    }
+    .note-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--card-shadow);
+      border-color: var(--primary);
+    }
+
+    .note-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .note-preview {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      white-space: pre-wrap;
+      word-break: break-word;
+      flex: 1;
+      line-height: 1.45;
+      max-height: 180px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .note-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(0,0,0,0.04);
+      font-size: 0.75rem;
+      color: var(--text-light);
+    }
+
+    /* ============================================================
+       4. PRIVATE JOURNAL STYLES
+       ============================================================ */
+    .journal-lock-screen {
+      text-align: center;
+      padding: 50px 20px;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .lock-shield-icon {
+      width: 72px;
+      height: 72px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 8px 20px rgba(244, 63, 94, 0.2);
+    }
+
+    .lock-shield-icon svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    .journal-content-unlocked {
+      display: none;
+    }
+
+    .journal-entry-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      margin-bottom: 18px;
+      transition: var(--transition);
+    }
+
+    .journal-header-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .journal-date-badge {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: var(--primary-soft);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      display: inline-block;
+    }
+
+    .journal-mood {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .journal-text {
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .mood-selector {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .mood-btn {
+      font-size: 1.3rem;
+      padding: 8px 12px;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .mood-btn.selected {
+      background: var(--primary-soft);
+      border-color: var(--primary);
+      transform: scale(1.1);
+    }
+
+    /* Modal / Popups */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 20px;
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+    }
+    .modal-close-btn:hover {
+      color: var(--text-main);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1f2937;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 2000;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 0.25s ease;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+    }
+
+    .empty-icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 12px;
+      color: var(--text-light);
+      opacity: 0.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 14px;
+      }
+      .nav-tabs {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .tab-btn {
+        padding: 8px 10px;
+        font-size: 0.78rem;
+      }
+      .tab-btn span {
+        display: none;
+      }
+      .tab-btn.active span {
+        display: inline;
+      }
+      main {
+        padding: 16px 12px 70px;
+      }
+      .card {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER & TABS -->
+  <header>
+    <div class="header-container">
+      <div class="brand" onclick="switchTab('gym')">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1 id="appHeaderTitle">Afnan's Space</h1>
+          <p id="appHeaderSubtitle">Fitness, Calories & Daily Journal</p>
+        </div>
+      </div>
+
+      <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('gym')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/>
+          </svg>
+          <span>Gym</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('nutrition')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/>
+          </svg>
+          <span>Calories</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('notes')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v5h5"/>
+          </svg>
+          <span>Notes</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('journal')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <span>Journal</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('settings')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          <span>Settings</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTAINER -->
+  <main>
+
+    <!-- ============================================================
+         TAB 1: GYM WORKOUT TRACKER
+         ============================================================ -->
+    <section id="view-gym" class="view-section active">
+      <div class="card greeting-card">
+        <div class="greeting-content">
+          <h2 id="gymGreeting">Stronger every day ✨</h2>
+          <p>Track your sets, weights, and reps. You are doing amazing!</p>
+        </div>
+      </div>
+
+      <!-- Log Workout Form -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>
+              </svg>
+              Log New Workout
+            </div>
+            <div class="card-subtitle">Record today's session, weights and reps</div>
+          </div>
+          <button class="btn btn-secondary btn-sm" onclick="populateQuickWorkout('Leg Day (Glutes & Quads)')">
+            ⚡ Quick Template
+          </button>
+        </div>
+
+        <form id="workoutForm" onsubmit="saveWorkout(event)">
+          <div class="form-row" style="margin-bottom: 14px;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label>Workout Title / Focus</label>
+              <input type="text" id="workoutTitle" class="form-control" placeholder="e.g. Glutes & Legs, Upper Body, Core" required>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label>Date</label>
+              <input type="date" id="workoutDate" class="form-control" required>
+            </div>
+          </div>
+
+          <div id="exercisesContainer">
+            <!-- Dynamic exercises added here -->
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap;">
+            <button type="button" class="btn btn-outline" onclick="addExerciseField()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Exercise
+            </button>
+            <button type="submit" class="btn btn-primary" style="margin-left: auto;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Save Workout
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Past Workouts Log -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Workout History</div>
+            <div class="card-subtitle">Your past gym achievements and milestones</div>
+          </div>
+          <div id="workoutStatsPill" class="badge" style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">
+            0 sessions logged
+          </div>
+        </div>
+
+        <div id="workoutHistoryList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TAB 2: CALORIES & MACROS TRACKER
+         ============================================================ -->
+    <section id="view-nutrition" class="view-section">
+      <!-- Date Picker & Daily Macro Goals summary -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Daily Nutrition & Macros</div>
+            <div class="card-subtitle" id="nutritionDateDisplay">Today's Progress</div>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <input type="date" id="macroSelectedDate" class="form-control" style="width: auto; padding: 6px 10px; font-size: 0.85rem;" onchange="renderNutritionView()">
+            <button class="btn btn-outline btn-sm" onclick="openGoalsModal()">
+              ⚙️ Set Goals
+            </button>
+          </div>
+        </div>
+
+        <div class="macro-dashboard">
+          <div class="macro-metric" style="--metric-color: #f43f5e;">
+            <div class="metric-title">Calories</div>
+            <div class="metric-value"><span id="calConsumed">0</span> <span style="font-size: 0.85rem; font-weight: 500; color: var(--text-muted);">/ <span id="calGoal">2000</span> kcal</span></div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="calProgress"></div>
+            </div>
+            <div class="metric-sub" id="calRemaining">2000 kcal left</div>
+          </div>
+
+          <div class="macro-metric" style="--metric-color: #ec4899;">
+            <div class="metric-title">Protein</div>
+            <div class="metric-value"><span id="proteinConsumed">0</span> <span style="font-size: 0.85rem; font-weight: 500; color: var(--text-muted);">/ <span id="proteinGoal">120</span>g</span></div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="proteinProgress"></div>
+            </div>
+            <div class="metric-sub" id="proteinRemaining">120g left</div>
+          </div>
+
+          <div class="macro-metric" style="--metric-color: #3b82f6;">
+            <div class="metric-title">Carbs</div>
+            <div class="metric-value"><span id="carbsConsumed">0</span> <span style="font-size: 0.85rem; font-weight: 500; color: var(--text-muted);">/ <span id="carbsGoal">220</span>g</span></div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="carbsProgress"></div>
+            </div>
+            <div class="metric-sub" id="carbsRemaining">220g left</div>
+          </div>
+
+          <div class="macro-metric" style="--metric-color: #eab308;">
+            <div class="metric-title">Fats</div>
+            <div class="metric-value"><span id="fatsConsumed">0</span> <span style="font-size: 0.85rem; font-weight: 500; color: var(--text-muted);">/ <span id="fatsGoal">60</span>g</span></div>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="fatsProgress"></div>
+            </div>
+            <div class="metric-sub" id="fatsRemaining">60g left</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Meal Card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
+            </svg>
+            Log a Meal
+          </div>
+        </div>
+
+        <form id="mealForm" onsubmit="saveMeal(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Meal Type</label>
+              <select id="mealType" class="form-control">
+                <option value="Breakfast">Breakfast 🥑</option>
+                <option value="Lunch">Lunch 🥗</option>
+                <option value="Dinner">Dinner 🍲</option>
+                <option value="Snack">Snack 🍓</option>
+              </select>
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+              <label>Food / Meal Description</label>
+              <input type="text" id="mealName" class="form-control" placeholder="e.g. Greek yogurt bowl with berries & honey" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Calories (kcal)</label>
+              <input type="number" id="mealCalories" class="form-control" placeholder="450" min="0" required>
+            </div>
+            <div class="form-group">
+              <label>Protein (g)</label>
+              <input type="number" id="mealProtein" class="form-control" placeholder="30" min="0" step="0.5">
+            </div>
+            <div class="form-group">
+              <label>Carbs (g)</label>
+              <input type="number" id="mealCarbs" class="form-control" placeholder="45" min="0" step="0.5">
+            </div>
+            <div class="form-group">
+              <label>Fats (g)</label>
+              <input type="number" id="mealFats" class="form-control" placeholder="12" min="0" step="0.5">
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; margin-top: 6px;">
+            <button type="submit" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Meal
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Logged Meals List -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Meals Logged for Selected Date</div>
+          <div id="mealsCount" class="card-subtitle">0 meals recorded</div>
+        </div>
+        <div id="mealsList" class="meals-list">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TAB 3: NOTES
+         ============================================================ -->
+    <section id="view-notes" class="view-section">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+              Personal Notes & Reminders
+            </div>
+            <div class="card-subtitle">Saved locally on your device. Never leaves your browser.</div>
+          </div>
+          <button class="btn btn-primary" onclick="openNoteModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            New Note
+          </button>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <input type="text" id="notesSearchInput" class="form-control" placeholder="🔍 Search your notes..." oninput="renderNotes()">
+        </div>
+
+        <div id="notesContainer" class="notes-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TAB 4: PRIVATE JOURNAL (PASSWORD PROTECTED)
+         ============================================================ -->
+    <section id="view-journal" class="view-section">
+      <!-- LOCKED VIEW -->
+      <div id="journalLockScreen" class="card journal-lock-screen">
+        <div class="lock-shield-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 6px;">Private Journal</h2>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px;" id="lockScreenSubtitle">
+          This section is encrypted and locked for your eyes only.
+        </p>
+
+        <form id="journalAuthForm" onsubmit="handleJournalAuth(event)">
+          <div class="form-group" style="text-align: left;">
+            <label id="journalPasswordLabel">Enter Journal Password</label>
+            <input type="password" id="journalPasswordInput" class="form-control" placeholder="••••••••" required autofocus>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span id="journalAuthBtnText">Unlock Journal</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- UNLOCKED VIEW -->
+      <div id="journalUnlockedView" class="journal-content-unlocked">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="var(--primary)">
+                  <path d="M21 2l-2 2m-14 14l-2 2m0-18l18 18"/>
+                </svg>
+                Unlocked Private Journal 🔒
+              </div>
+              <div class="card-subtitle">Encrypted and safely stored on this computer</div>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-outline btn-sm" onclick="promptChangeJournalPassword()">
+                🔑 Change Password
+              </button>
+              <button class="btn btn-secondary btn-sm" onclick="lockJournal()">
+                🔒 Lock Now
+              </button>
+            </div>
+          </div>
+
+          <!-- New Journal Entry Form -->
+          <form id="journalEntryForm" onsubmit="saveJournalEntry(event)">
+            <div class="form-row" style="margin-bottom: 12px;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label>Date</label>
+                <input type="date" id="journalDate" class="form-control" required>
+              </div>
+              <div class="form-group" style="margin-bottom: 0; grid-column: span 2;">
+                <label>Entry Title / Theme</label>
+                <input type="text" id="journalTitle" class="form-control" placeholder="e.g. Thoughts on today, gym feeling, gratitude..." required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Today's Vibe / Mood</label>
+              <div class="mood-selector">
+                <button type="button" class="mood-btn selected" onclick="selectMood('✨ Happy & Glowing', this)">✨</button>
+                <button type="button" class="mood-btn" onclick="selectMood('💪 Strong & Energized', this)">💪</button>
+                <button type="button" class="mood-btn" onclick="selectMood('🌿 Peaceful & Mindful', this)">🌿</button>
+                <button type="button" class="mood-btn" onclick="selectMood('😴 Cozy / Tired', this)">😴</button>
+                <button type="button" class="mood-btn" onclick="selectMood('💭 Reflective', this)">💭</button>
+                <button type="button" class="mood-btn" onclick="selectMood('❤️ In Love / Grateful', this)">❤️</button>
+              </div>
+              <input type="hidden" id="selectedMood" value="✨ Happy & Glowing">
+            </div>
+
+            <div class="form-group">
+              <label>Journal Entry</label>
+              <textarea id="journalContent" class="form-control" rows="6" placeholder="Dear self... how are you feeling today? What went well? What are you grateful for?" required></textarea>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end;">
+              <button type="submit" class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Save Encrypted Entry
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Past Journal Entries -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Past Entries</div>
+            <div id="journalEntriesCount" class="card-subtitle">0 entries</div>
+          </div>
+          <div id="journalEntriesList">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TAB 5: SETTINGS & BACKUP
+         ============================================================ -->
+    <section id="view-settings" class="view-section">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+            Preferences & Personalization
+          </div>
+          <div class="card-subtitle">Customize your experience</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="settingUserName" class="form-control" value="Afnan" onchange="updateUserName(this.value)">
+          </div>
+          <div class="form-group">
+            <label>Weight Unit</label>
+            <select id="settingWeightUnit" class="form-control" onchange="updateWeightUnit(this.value)">
+              <option value="kg">Kilograms (kg)</option>
+              <option value="lbs">Pounds (lbs)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Color Theme</label>
+            <select id="settingTheme" class="form-control" onchange="changeTheme(this.value)">
+              <option value="grey">Aesthetic Grey (Default) 🩶</option>
+              <option value="dark-grey">Charcoal Slate 🖤</option>
+              <option value="rose">Rose Blush 🌸</option>
+              <option value="lavender">Lavender Cloud 💜</option>
+              <option value="sage">Matcha Sage 🌿</option>
+              <option value="dark">Midnight Velvet 🌙</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Backup & Restore -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Backup & Safety
+            </div>
+            <div class="card-subtitle">Save a local file backup so you never lose your progress or notes</div>
+          </div>
+        </div>
+
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">
+          All your data is currently stored privately on this browser. You can export a single backup file anytime and restore it on any computer or phone!
+        </p>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="exportDataBackup()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export Backup (JSON)
+          </button>
+          <label class="btn btn-outline" style="cursor: pointer; margin-bottom: 0;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Import Backup File
+            <input type="file" id="importFileInput" accept=".json" style="display: none;" onchange="importDataBackup(event)">
+          </label>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       MODALS
+       ============================================================ -->
+  <!-- 1. Macro Goals Modal -->
+  <div id="goalsModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="card-title">Daily Nutrition Goals</div>
+        <button class="modal-close-btn" onclick="closeGoalsModal()">✕</button>
+      </div>
+      <form id="goalsForm" onsubmit="saveMacroGoals(event)">
+        <div class="form-group">
+          <label>Daily Calorie Target (kcal)</label>
+          <input type="number" id="goalCaloriesInput" class="form-control" required min="500" max="8000">
+        </div>
+        <div class="form-group">
+          <label>Protein Target (g)</label>
+          <input type="number" id="goalProteinInput" class="form-control" required min="0" max="500">
+        </div>
+        <div class="form-group">
+          <label>Carbohydrates Target (g)</label>
+          <input type="number" id="goalCarbsInput" class="form-control" required min="0" max="1000">
+        </div>
+        <div class="form-group">
+          <label>Fats Target (g)</label>
+          <input type="number" id="goalFatsInput" class="form-control" required min="0" max="500">
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
+          <button type="button" class="btn btn-outline" onclick="closeGoalsModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Targets</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Note Modal (Create/Edit) -->
+  <div id="noteModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="card-title" id="noteModalTitle">Create Note</div>
+        <button class="modal-close-btn" onclick="closeNoteModal()">✕</button>
+      </div>
+      <form id="noteForm" onsubmit="saveNote(event)">
+        <input type="hidden" id="editNoteId">
+        <div class="form-group">
+          <label>Note Title</label>
+          <input type="text" id="noteTitleInput" class="form-control" placeholder="e.g. My Favorite Protein Smoothies, Gym split idea" required>
+        </div>
+        <div class="form-group">
+          <label>Content</label>
+          <textarea id="noteContentInput" class="form-control" rows="8" placeholder="Type your thoughts, routines, recipes, to-do lists..." required></textarea>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px;">
+          <button type="button" class="btn btn-outline" onclick="closeNoteModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastNotification" class="toast">
+    <span id="toastMessage">Success</span>
+  </div>
+
+  <!-- ============================================================
+       APPLICATION LOGIC
+       ============================================================ -->
+  <script>
+    // --- Application State ---
+    const STORAGE_KEYS = {
+      WORKOUTS: "afnan_gym_workouts",
+      MEALS: "afnan_nutrition_meals",
+      GOALS: "afnan_macro_goals",
+      NOTES: "afnan_notes",
+      JOURNAL_SALT: "afnan_journal_salt",
+      JOURNAL_HASH: "afnan_journal_hash",
+      JOURNAL_ENTRIES: "afnan_journal_entries", // encrypted payload or hashed storage
+      SETTINGS: "afnan_settings"
+    };
+
+    let appState = {
+      workouts: [],
+      meals: [],
+      goals: { calories: 2000, protein: 120, carbs: 220, fats: 60 },
+      notes: [],
+      journalEntries: [],
+      journalPassword: null,
+      isJournalUnlocked: false,
+      settings: {
+        userName: "Afnan",
+        weightUnit: "kg",
+        theme: "grey"
+      }
+    };
+
+    // --- Helpers: Date formatting & Toast ---
+    function getTodayString() {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      return `${yyyy}-${mm}-${dd}`;
+    }
+
+    function formatDateDisplay(dateStr) {
+      if (!dateStr) return "";
+      const [y, m, d] = dateStr.split("-").map(Number);
+      const date = new Date(y, m - 1, d);
+      return date.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toastNotification");
+      document.getElementById("toastMessage").textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2600);
+    }
+
+    // --- Tab Switching ---
+    function switchTab(tabName) {
+      document.querySelectorAll(".nav-tabs .tab-btn").forEach(btn => btn.classList.remove("active"));
+      document.querySelectorAll(".view-section").forEach(sec => sec.classList.remove("active"));
+
+      const targetBtn = Array.from(document.querySelectorAll(".tab-btn")).find(b => b.getAttribute("onclick")?.includes(tabName));
+      if (targetBtn) targetBtn.classList.add("active");
+
+      const targetSection = document.getElementById(`view-${tabName}`);
+      if (targetSection) targetSection.classList.add("active");
+
+      if (tabName === "nutrition") {
+        renderNutritionView();
+      } else if (tabName === "gym") {
+        renderGymHistory();
+      } else if (tabName === "notes") {
+        renderNotes();
+      } else if (tabName === "journal") {
+        checkJournalLockStatus();
+      }
+    }
+
+    // --- Initialize App ---
+    window.addEventListener("DOMContentLoaded", () => {
+      loadStorageData();
+      applySettings();
+
+      // Set default dates
+      const today = getTodayString();
+      document.getElementById("workoutDate").value = today;
+      document.getElementById("macroSelectedDate").value = today;
+      document.getElementById("journalDate").value = today;
+
+      // Start with 1 exercise field
+      addExerciseField("Barbell Hip Thrust", [
+        { weight: 60, reps: 10 },
+        { weight: 70, reps: 8 },
+        { weight: 80, reps: 8 }
+      ]);
+
+      renderGymHistory();
+      renderNutritionView();
+      renderNotes();
+      checkJournalLockStatus();
+    });
+
+    function loadStorageData() {
+      try {
+        const savedWorkouts = localStorage.getItem(STORAGE_KEYS.WORKOUTS);
+        if (savedWorkouts) appState.workouts = JSON.parse(savedWorkouts);
+
+        const savedMeals = localStorage.getItem(STORAGE_KEYS.MEALS);
+        if (savedMeals) appState.meals = JSON.parse(savedMeals);
+
+        const savedGoals = localStorage.getItem(STORAGE_KEYS.GOALS);
+        if (savedGoals) appState.goals = JSON.parse(savedGoals);
+
+        const savedNotes = localStorage.getItem(STORAGE_KEYS.NOTES);
+        if (savedNotes) appState.notes = JSON.parse(savedNotes);
+
+        const savedSettings = localStorage.getItem(STORAGE_KEYS.SETTINGS);
+        if (savedSettings) appState.settings = Object.assign(appState.settings, JSON.parse(savedSettings));
+
+      } catch (e) {
+        console.error("Error loading storage:", e);
+      }
+    }
+
+    function applySettings() {
+      const name = appState.settings.userName || "Afnan";
+      document.getElementById("appHeaderTitle").textContent = `${name}'s Space`;
+      document.getElementById("gymGreeting").textContent = `Stronger every day, ${name} ✨`;
+      document.getElementById("settingUserName").value = name;
+      document.getElementById("settingWeightUnit").value = appState.settings.weightUnit || "kg";
+      document.getElementById("settingTheme").value = appState.settings.theme || "grey";
+      changeTheme(appState.settings.theme || "grey", false);
+    }
+
+    function updateUserName(name) {
+      if (!name.trim()) return;
+      appState.settings.userName = name.trim();
+      localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(appState.settings));
+      applySettings();
+      showToast("Name updated!");
+    }
+
+    function updateWeightUnit(unit) {
+      appState.settings.weightUnit = unit;
+      localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(appState.settings));
+      renderGymHistory();
+      showToast(`Unit changed to ${unit}`);
+    }
+
+    function changeTheme(themeName, save = true) {
+      if (themeName === "rose") {
+        document.documentElement.removeAttribute("data-theme");
+      } else {
+        document.documentElement.setAttribute("data-theme", themeName);
+      }
+      if (save) {
+        appState.settings.theme = themeName;
+        localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(appState.settings));
+      }
+    }
+
+    // ============================================================
+    // 1. GYM TRACKER FUNCTIONS
+    // ============================================================
+    let exerciseCounter = 0;
+
+    function addExerciseField(defaultName = "", defaultSets = null) {
+      exerciseCounter++;
+      const id = `ex_${exerciseCounter}`;
+      const container = document.getElementById("exercisesContainer");
+
+      const div = document.createElement("div");
+      div.className = "exercise-entry";
+      div.id = id;
+
+      div.innerHTML = `
+        <button type="button" class="remove-ex-btn" title="Remove Exercise" onclick="document.getElementById('${id}').remove()">✕</button>
+        <div class="form-group" style="margin-bottom: 8px;">
+          <label>Exercise Name</label>
+          <input type="text" class="form-control ex-name" placeholder="e.g. Romanian Deadlift, Squat, Lat Pulldown" value="${defaultName}" required>
+        </div>
+        <div style="font-size: 0.76rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px;">Sets & Reps</div>
+        <div class="sets-container" id="${id}_sets"></div>
+        <div style="margin-top: 8px;">
+          <button type="button" class="btn btn-outline btn-sm" onclick="addSetRow('${id}_sets')">+ Add Set</button>
+        </div>
+      `;
+
+      container.appendChild(div);
+
+      const setsContainerId = `${id}_sets`;
+      if (defaultSets && defaultSets.length > 0) {
+        defaultSets.forEach(s => addSetRow(setsContainerId, s.weight, s.reps));
+      } else {
+        addSetRow(setsContainerId);
+      }
+    }
+
+    function addSetRow(setsContainerId, weight = "", reps = "") {
+      const container = document.getElementById(setsContainerId);
+      if (!container) return;
+
+      const setIndex = container.children.length + 1;
+      const unit = appState.settings.weightUnit || "kg";
+      const setDiv = document.createElement("div");
+      setDiv.className = "set-row";
+
+      setDiv.innerHTML = `
+        <div class="set-badge">#${setIndex}</div>
+        <input type="number" step="0.5" class="form-control set-weight" placeholder="Weight (${unit})" value="${weight}" required>
+        <input type="number" class="form-control set-reps" placeholder="Reps" value="${reps}" required>
+        <button type="button" class="set-delete-btn" onclick="this.parentElement.remove(); renumberSets('${setsContainerId}');">✕</button>
+      `;
+
+      container.appendChild(setDiv);
+    }
+
+    function renumberSets(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      Array.from(container.children).forEach((row, idx) => {
+        const badge = row.querySelector(".set-badge");
+        if (badge) badge.textContent = `#${idx + 1}`;
+      });
+    }
+
+    function populateQuickWorkout(name) {
+      document.getElementById("workoutTitle").value = name;
+      const container = document.getElementById("exercisesContainer");
+      container.innerHTML = "";
+
+      addExerciseField("Hip Thrusts", [
+        { weight: 60, reps: 10 },
+        { weight: 70, reps: 10 },
+        { weight: 75, reps: 8 }
+      ]);
+      addExerciseField("Romanian Deadlifts (RDL)", [
+        { weight: 45, reps: 10 },
+        { weight: 50, reps: 10 },
+        { weight: 50, reps: 8 }
+      ]);
+      addExerciseField("Bulgarian Split Squats", [
+        { weight: 12, reps: 10 },
+        { weight: 14, reps: 8 }
+      ]);
+
+      showToast("Template loaded!");
+    }
+
+    function saveWorkout(e) {
+      e.preventDefault();
+      const title = document.getElementById("workoutTitle").value.trim();
+      const date = document.getElementById("workoutDate").value;
+
+      const exEntries = document.querySelectorAll("#exercisesContainer .exercise-entry");
+      if (exEntries.length === 0) {
+        alert("Please add at least one exercise.");
+        return;
+      }
+
+      const exercises = [];
+      exEntries.forEach(entry => {
+        const name = entry.querySelector(".ex-name").value.trim();
+        const setRows = entry.querySelectorAll(".set-row");
+        const sets = [];
+        setRows.forEach(row => {
+          const w = parseFloat(row.querySelector(".set-weight").value) || 0;
+          const r = parseInt(row.querySelector(".set-reps").value, 10) || 0;
+          sets.push({ weight: w, reps: r });
+        });
+
+        if (name && sets.length > 0) {
+          exercises.push({ name, sets });
+        }
+      });
+
+      const workout = {
+        id: "w_" + Date.now(),
+        title,
+        date,
+        unit: appState.settings.weightUnit || "kg",
+        exercises,
+        createdAt: new Date().toISOString()
+      };
+
+      appState.workouts.unshift(workout);
+      localStorage.setItem(STORAGE_KEYS.WORKOUTS, JSON.stringify(appState.workouts));
+
+      showToast("Workout saved! Great job! 💪");
+      document.getElementById("workoutTitle").value = "";
+      renderGymHistory();
+    }
+
+    function deleteWorkout(id) {
+      if (!confirm("Are you sure you want to delete this workout entry?")) return;
+      appState.workouts = appState.workouts.filter(w => w.id !== id);
+      localStorage.setItem(STORAGE_KEYS.WORKOUTS, JSON.stringify(appState.workouts));
+      renderGymHistory();
+      showToast("Workout removed.");
+    }
+
+    function renderGymHistory() {
+      const container = document.getElementById("workoutHistoryList");
+      const pill = document.getElementById("workoutStatsPill");
+      pill.textContent = `${appState.workouts.length} session${appState.workouts.length === 1 ? '' : 's'} logged`;
+
+      if (appState.workouts.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/>
+            </svg>
+            <div style="font-weight: 600; margin-bottom: 4px;">No workouts recorded yet</div>
+            <div style="font-size: 0.85rem;">Log your first gym session above to track your weight & reps!</div>
+          </div>
+        `;
+        return;
+      }
+
+      // Compute max weight personal records per exercise
+      const prMap = {};
+      appState.workouts.forEach(w => {
+        w.exercises.forEach(ex => {
+          const lower = ex.name.toLowerCase().trim();
+          ex.sets.forEach(s => {
+            if (!prMap[lower] || s.weight > prMap[lower].weight) {
+              prMap[lower] = { weight: s.weight, unit: w.unit || 'kg' };
+            }
+          });
+        });
+      });
+
+      container.innerHTML = appState.workouts.map(w => {
+        const unit = w.unit || "kg";
+        const exHtml = w.exercises.map(ex => {
+          const setsSummary = ex.sets.map((s, idx) => `Set ${idx + 1}: <b>${s.weight} ${unit}</b> × ${s.reps} reps`).join(" &bull; ");
+          const bestWeightInSet = Math.max(...ex.sets.map(s => s.weight));
+          const isPR = prMap[ex.name.toLowerCase().trim()]?.weight === bestWeightInSet && bestWeightInSet > 0;
+
+          return `
+            <tr>
+              <td style="font-weight: 600; width: 35%;">
+                ${escapeHtml(ex.name)}
+                ${isPR ? `<span class="pr-pill">🏆 PR: ${bestWeightInSet} ${unit}</span>` : ""}
+              </td>
+              <td>${setsSummary}</td>
+            </tr>
+          `;
+        }).join("");
+
+        return `
+          <div class="card workout-card" style="margin-bottom: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+              <div>
+                <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main);">${escapeHtml(w.title)}</h3>
+                <div class="workout-meta">
+                  <span class="workout-meta-item">
+                    📅 ${formatDateDisplay(w.date)}
+                  </span>
+                  <span class="workout-meta-item">
+                    ⚡ ${w.exercises.length} exercise${w.exercises.length === 1 ? '' : 's'}
+                  </span>
+                </div>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="deleteWorkout('${w.id}')" title="Delete Workout" style="color: #ef4444; border-color: transparent;">
+                🗑️
+              </button>
+            </div>
+
+            <table class="exercise-table">
+              <tbody>${exHtml}</tbody>
+            </table>
+          </div>
+        `;
+      }).join("");
+    }
+
+    // ============================================================
+    // 2. CALORIES & MACROS FUNCTIONS
+    // ============================================================
+    function renderNutritionView() {
+      const selectedDate = document.getElementById("macroSelectedDate").value || getTodayString();
+      document.getElementById("nutritionDateDisplay").textContent = `Viewing ${formatDateDisplay(selectedDate)}`;
+
+      const goals = appState.goals;
+      document.getElementById("calGoal").textContent = goals.calories;
+      document.getElementById("proteinGoal").textContent = goals.protein;
+      document.getElementById("carbsGoal").textContent = goals.carbs;
+      document.getElementById("fatsGoal").textContent = goals.fats;
+
+      const dayMeals = appState.meals.filter(m => m.date === selectedDate);
+
+      let totalCal = 0, totalP = 0, totalC = 0, totalF = 0;
+      dayMeals.forEach(m => {
+        totalCal += Number(m.calories) || 0;
+        totalP += Number(m.protein) || 0;
+        totalC += Number(m.carbs) || 0;
+        totalF += Number(m.fats) || 0;
+      });
+
+      // Update Dashboard Metrics
+      document.getElementById("calConsumed").textContent = Math.round(totalCal);
+      document.getElementById("proteinConsumed").textContent = Math.round(totalP);
+      document.getElementById("carbsConsumed").textContent = Math.round(totalC);
+      document.getElementById("fatsConsumed").textContent = Math.round(totalF);
+
+      // Remaining
+      const calRem = goals.calories - totalCal;
+      const pRem = goals.protein - totalP;
+      const cRem = goals.carbs - totalC;
+      const fRem = goals.fats - totalF;
+
+      document.getElementById("calRemaining").textContent = calRem >= 0 ? `${Math.round(calRem)} kcal left` : `${Math.abs(Math.round(calRem))} kcal over target`;
+      document.getElementById("proteinRemaining").textContent = pRem >= 0 ? `${Math.round(pRem)}g left` : `Target reached! 🎉`;
+      document.getElementById("carbsRemaining").textContent = cRem >= 0 ? `${Math.round(cRem)}g left` : `Target reached!`;
+      document.getElementById("fatsRemaining").textContent = fRem >= 0 ? `${Math.round(fRem)}g left` : `Target reached!`;
+
+      // Progress bars
+      updateProgressBar("calProgress", totalCal, goals.calories);
+      updateProgressBar("proteinProgress", totalP, goals.protein);
+      updateProgressBar("carbsProgress", totalC, goals.carbs);
+      updateProgressBar("fatsProgress", totalF, goals.fats);
+
+      // Meals List
+      const mealsContainer = document.getElementById("mealsList");
+      document.getElementById("mealsCount").textContent = `${dayMeals.length} meal${dayMeals.length === 1 ? '' : 's'} logged`;
+
+      if (dayMeals.length === 0) {
+        mealsContainer.innerHTML = `
+          <div class="empty-state">
+            <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/>
+            </svg>
+            <div style="font-weight: 600; margin-bottom: 4px;">No meals logged for this day</div>
+            <div style="font-size: 0.85rem;">Enter what you ate above to track calories & macros!</div>
+          </div>
+        `;
+        return;
+      }
+
+      mealsContainer.innerHTML = dayMeals.map(m => {
+        const typeClass = `meal-type-${m.type.toLowerCase()}`;
+        return `
+          <div class="meal-card">
+            <div>
+              <span class="meal-type-pill ${typeClass}">${escapeHtml(m.type)}</span>
+              <div style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);">${escapeHtml(m.name)}</div>
+              <div class="meal-macros-badges">
+                <span class="macro-tag macro-p">Protein: ${m.protein || 0}g</span> &bull;
+                <span class="macro-tag macro-c">Carbs: ${m.carbs || 0}g</span> &bull;
+                <span class="macro-tag macro-f">Fats: ${m.fats || 0}g</span>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <div style="text-align: right;">
+                <div style="font-size: 1.15rem; font-weight: 800; color: var(--primary);">${m.calories}</div>
+                <div style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">KCAL</div>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="deleteMeal('${m.id}')" style="color: #ef4444; border-color: transparent;">
+                ✕
+              </button>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function updateProgressBar(id, val, max) {
+      const bar = document.getElementById(id);
+      if (!bar) return;
+      const pct = max > 0 ? Math.min(Math.round((val / max) * 100), 100) : 0;
+      bar.style.width = `${pct}%`;
+    }
+
+    function saveMeal(e) {
+      e.preventDefault();
+      const date = document.getElementById("macroSelectedDate").value || getTodayString();
+      const type = document.getElementById("mealType").value;
+      const name = document.getElementById("mealName").value.trim();
+      const calories = parseFloat(document.getElementById("mealCalories").value) || 0;
+      const protein = parseFloat(document.getElementById("mealProtein").value) || 0;
+      const carbs = parseFloat(document.getElementById("mealCarbs").value) || 0;
+      const fats = parseFloat(document.getElementById("mealFats").value) || 0;
+
+      const meal = {
+        id: "m_" + Date.now(),
+        date,
+        type,
+        name,
+        calories,
+        protein,
+        carbs,
+        fats
+      };
+
+      appState.meals.push(meal);
+      localStorage.setItem(STORAGE_KEYS.MEALS, JSON.stringify(appState.meals));
+
+      // Reset form fields
+      document.getElementById("mealName").value = "";
+      document.getElementById("mealCalories").value = "";
+      document.getElementById("mealProtein").value = "";
+      document.getElementById("mealCarbs").value = "";
+      document.getElementById("mealFats").value = "";
+
+      showToast("Meal logged!");
+      renderNutritionView();
+    }
+
+    function deleteMeal(id) {
+      appState.meals = appState.meals.filter(m => m.id !== id);
+      localStorage.setItem(STORAGE_KEYS.MEALS, JSON.stringify(appState.meals));
+      renderNutritionView();
+      showToast("Meal removed.");
+    }
+
+    function openGoalsModal() {
+      document.getElementById("goalCaloriesInput").value = appState.goals.calories;
+      document.getElementById("goalProteinInput").value = appState.goals.protein;
+      document.getElementById("goalCarbsInput").value = appState.goals.carbs;
+      document.getElementById("goalFatsInput").value = appState.goals.fats;
+      document.getElementById("goalsModal").classList.add("active");
+    }
+
+    function closeGoalsModal() {
+      document.getElementById("goalsModal").classList.remove("active");
+    }
+
+    function saveMacroGoals(e) {
+      e.preventDefault();
+      appState.goals = {
+        calories: parseInt(document.getElementById("goalCaloriesInput").value, 10) || 2000,
+        protein: parseInt(document.getElementById("goalProteinInput").value, 10) || 120,
+        carbs: parseInt(document.getElementById("goalCarbsInput").value, 10) || 220,
+        fats: parseInt(document.getElementById("goalFatsInput").value, 10) || 60
+      };
+      localStorage.setItem(STORAGE_KEYS.GOALS, JSON.stringify(appState.goals));
+      closeGoalsModal();
+      showToast("Macro goals updated! 🎯");
+      renderNutritionView();
+    }
+
+    // ============================================================
+    // 3. PERSONAL NOTES FUNCTIONS
+    // ============================================================
+    function renderNotes() {
+      const container = document.getElementById("notesContainer");
+      const searchQuery = (document.getElementById("notesSearchInput").value || "").toLowerCase().trim();
+
+      const filtered = appState.notes.filter(n => {
+        return (n.title || "").toLowerCase().includes(searchQuery) ||
+               (n.content || "").toLowerCase().includes(searchQuery);
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state" style="grid-column: 1 / -1;">
+            <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"/><path d="M15 3v5h5"/>
+            </svg>
+            <div style="font-weight: 600; margin-bottom: 4px;">No notes found</div>
+            <div style="font-size: 0.85rem;">Click "New Note" above to write down ideas, lists, or recipes!</div>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(n => {
+        return `
+          <div class="note-card" onclick="editNote('${n.id}')">
+            <div>
+              <div class="note-title">${escapeHtml(n.title)}</div>
+              <div class="note-preview">${escapeHtml(n.content)}</div>
+            </div>
+            <div class="note-footer">
+              <span>${formatDateDisplay(n.updatedAt ? n.updatedAt.slice(0, 10) : getTodayString())}</span>
+              <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); deleteNote('${n.id}')" title="Delete Note" style="color: #ef4444; border-color: transparent; padding: 4px 6px;">
+                🗑️
+              </button>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function openNoteModal(note = null) {
+      if (note) {
+        document.getElementById("noteModalTitle").textContent = "Edit Note";
+        document.getElementById("editNoteId").value = note.id;
+        document.getElementById("noteTitleInput").value = note.title;
+        document.getElementById("noteContentInput").value = note.content;
+      } else {
+        document.getElementById("noteModalTitle").textContent = "Create Note";
+        document.getElementById("editNoteId").value = "";
+        document.getElementById("noteTitleInput").value = "";
+        document.getElementById("noteContentInput").value = "";
+      }
+      document.getElementById("noteModal").classList.add("active");
+    }
+
+    function closeNoteModal() {
+      document.getElementById("noteModal").classList.remove("active");
+    }
+
+    function editNote(id) {
+      const note = appState.notes.find(n => n.id === id);
+      if (note) openNoteModal(note);
+    }
+
+    function saveNote(e) {
+      e.preventDefault();
+      const id = document.getElementById("editNoteId").value;
+      const title = document.getElementById("noteTitleInput").value.trim();
+      const content = document.getElementById("noteContentInput").value.trim();
+
+      if (id) {
+        const note = appState.notes.find(n => n.id === id);
+        if (note) {
+          note.title = title;
+          note.content = content;
+          note.updatedAt = new Date().toISOString();
+        }
+      } else {
+        const newNote = {
+          id: "note_" + Date.now(),
+          title,
+          content,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        };
+        appState.notes.unshift(newNote);
+      }
+
+      localStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(appState.notes));
+      closeNoteModal();
+      showToast("Note saved!");
+      renderNotes();
+    }
+
+    function deleteNote(id) {
+      if (!confirm("Are you sure you want to delete this note?")) return;
+      appState.notes = appState.notes.filter(n => n.id !== id);
+      localStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(appState.notes));
+      renderNotes();
+      showToast("Note deleted.");
+    }
+
+    // ============================================================
+    // 4. PRIVATE JOURNAL (SECURE ENCRYPTED VAULT)
+    // ============================================================
+    // We use Web Crypto API (PBKDF2 + AES-GCM 256) to genuinely encrypt the journal entries
+    // so they are safe even if someone inspects localStorage!
+
+    async function deriveKey(password, salt) {
+      const enc = new TextEncoder();
+      const keyMaterial = await window.crypto.subtle.importKey(
+        "raw",
+        enc.encode(password),
+        { name: "PBKDF2" },
+        false,
+        ["deriveKey"]
+      );
+      return window.crypto.subtle.deriveKey(
+        {
+          name: "PBKDF2",
+          salt: salt,
+          iterations: 100000,
+          hash: "SHA-256"
+        },
+        keyMaterial,
+        { name: "AES-GCM", length: 256 },
+        false,
+        ["encrypt", "decrypt"]
+      );
+    }
+
+    async function hashPassword(password, salt) {
+      const enc = new TextEncoder();
+      const salted = new Uint8Array([...enc.encode(password), ...salt]);
+      const digest = await window.crypto.subtle.digest("SHA-256", salted);
+      return btoa(String.fromCharCode(...new Uint8Array(digest)));
+    }
+
+    function checkJournalLockStatus() {
+      const savedHash = localStorage.getItem(STORAGE_KEYS.JOURNAL_HASH);
+      const lockScreen = document.getElementById("journalLockScreen");
+      const unlockedView = document.getElementById("journalUnlockedView");
+
+      if (appState.isJournalUnlocked) {
+        lockScreen.style.display = "none";
+        unlockedView.style.display = "block";
+        renderJournalEntries();
+        return;
+      }
+
+      lockScreen.style.display = "block";
+      unlockedView.style.display = "none";
+
+      if (!savedHash) {
+        document.getElementById("journalPasswordLabel").textContent = "Create Your Journal Password";
+        document.getElementById("lockScreenSubtitle").textContent = "Set a secret password for your private journal. Only you will know it!";
+        document.getElementById("journalAuthBtnText").textContent = "Create Password & Unlock";
+      } else {
+        document.getElementById("journalPasswordLabel").textContent = "Enter Journal Password";
+        document.getElementById("lockScreenSubtitle").textContent = "This journal is password protected. Enter your password to view and write.";
+        document.getElementById("journalAuthBtnText").textContent = "Unlock Journal";
+      }
+      document.getElementById("journalPasswordInput").value = "";
+    }
+
+    async function handleJournalAuth(e) {
+      e.preventDefault();
+      const enteredPassword = document.getElementById("journalPasswordInput").value;
+      if (!enteredPassword) return;
+
+      let saltStr = localStorage.getItem(STORAGE_KEYS.JOURNAL_SALT);
+      let savedHash = localStorage.getItem(STORAGE_KEYS.JOURNAL_HASH);
+
+      if (!savedHash) {
+        // First time setting password!
+        const salt = window.crypto.getRandomValues(new Uint8Array(16));
+        const saltB64 = btoa(String.fromCharCode(...salt));
+        const hash = await hashPassword(enteredPassword, salt);
+
+        localStorage.setItem(STORAGE_KEYS.JOURNAL_SALT, saltB64);
+        localStorage.setItem(STORAGE_KEYS.JOURNAL_HASH, hash);
+
+        appState.journalPassword = enteredPassword;
+        appState.isJournalUnlocked = true;
+        appState.journalEntries = [];
+        showToast("Password set! Welcome to your private journal 🔒");
+        checkJournalLockStatus();
+      } else {
+        // Authenticating
+        const salt = Uint8Array.from(atob(saltStr), c => c.charCodeAt(0));
+        const computedHash = await hashPassword(enteredPassword, salt);
+
+        if (computedHash === savedHash) {
+          appState.journalPassword = enteredPassword;
+          appState.isJournalUnlocked = true;
+
+          // Decrypt existing entries
+          await loadAndDecryptJournal(enteredPassword, salt);
+          showToast("Journal unlocked ✨");
+          checkJournalLockStatus();
+        } else {
+          alert("Incorrect password. Please try again.");
+          document.getElementById("journalPasswordInput").value = "";
+        }
+      }
+    }
+
+    async function loadAndDecryptJournal(password, salt) {
+      const encryptedData = localStorage.getItem(STORAGE_KEYS.JOURNAL_ENTRIES);
+      if (!encryptedData) {
+        appState.journalEntries = [];
+        return;
+      }
+
+      try {
+        const parsed = JSON.parse(encryptedData);
+        const iv = Uint8Array.from(atob(parsed.iv), c => c.charCodeAt(0));
+        const ciphertext = Uint8Array.from(atob(parsed.ciphertext), c => c.charCodeAt(0));
+
+        const key = await deriveKey(password, salt);
+        const decrypted = await window.crypto.subtle.decrypt(
+          { name: "AES-GCM", iv: iv },
+          key,
+          ciphertext
+        );
+
+        const decoded = new TextDecoder().decode(decrypted);
+        appState.journalEntries = JSON.parse(decoded);
+      } catch (err) {
+        console.error("Decryption error:", err);
+        appState.journalEntries = [];
+        alert("Could not decrypt entries. Password may be mismatched.");
+      }
+    }
+
+    async function encryptAndSaveJournal() {
+      if (!appState.journalPassword) return;
+      const saltStr = localStorage.getItem(STORAGE_KEYS.JOURNAL_SALT);
+      const salt = Uint8Array.from(atob(saltStr), c => c.charCodeAt(0));
+
+      const key = await deriveKey(appState.journalPassword, salt);
+      const iv = window.crypto.getRandomValues(new Uint8Array(12));
+      const encoded = new TextEncoder().encode(JSON.stringify(appState.journalEntries));
+
+      const encrypted = await window.crypto.subtle.encrypt(
+        { name: "AES-GCM", iv: iv },
+        key,
+        encoded
+      );
+
+      const payload = {
+        iv: btoa(String.fromCharCode(...iv)),
+        ciphertext: btoa(String.fromCharCode(...new Uint8Array(encrypted)))
+      };
+
+      localStorage.setItem(STORAGE_KEYS.JOURNAL_ENTRIES, JSON.stringify(payload));
+    }
+
+    function lockJournal() {
+      appState.isJournalUnlocked = false;
+      appState.journalPassword = null;
+      appState.journalEntries = [];
+      showToast("Journal locked 🔒");
+      checkJournalLockStatus();
+    }
+
+    async function promptChangeJournalPassword() {
+      const current = prompt("Enter your CURRENT journal password:");
+      if (!current) return;
+
+      const saltStr = localStorage.getItem(STORAGE_KEYS.JOURNAL_SALT);
+      const savedHash = localStorage.getItem(STORAGE_KEYS.JOURNAL_HASH);
+      const salt = Uint8Array.from(atob(saltStr), c => c.charCodeAt(0));
+      const checkHash = await hashPassword(current, salt);
+
+      if (checkHash !== savedHash) {
+        alert("Incorrect current password.");
+        return;
+      }
+
+      const newPass = prompt("Enter your NEW journal password:");
+      if (!newPass || newPass.trim() === "") {
+        alert("Password cannot be empty.");
+        return;
+      }
+
+      const confirmPass = prompt("Confirm your NEW password:");
+      if (newPass !== confirmPass) {
+        alert("Passwords did not match.");
+        return;
+      }
+
+      // Generate new salt and hash
+      const newSalt = window.crypto.getRandomValues(new Uint8Array(16));
+      const newSaltB64 = btoa(String.fromCharCode(...newSalt));
+      const newHash = await hashPassword(newPass, newSalt);
+
+      localStorage.setItem(STORAGE_KEYS.JOURNAL_SALT, newSaltB64);
+      localStorage.setItem(STORAGE_KEYS.JOURNAL_HASH, newHash);
+
+      appState.journalPassword = newPass;
+      await encryptAndSaveJournal();
+
+      showToast("Password updated successfully! 🔑");
+    }
+
+    function selectMood(moodText, btn) {
+      document.querySelectorAll(".mood-btn").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+      document.getElementById("selectedMood").value = moodText;
+    }
+
+    async function saveJournalEntry(e) {
+      e.preventDefault();
+      const date = document.getElementById("journalDate").value;
+      const title = document.getElementById("journalTitle").value.trim();
+      const mood = document.getElementById("selectedMood").value;
+      const content = document.getElementById("journalContent").value.trim();
+
+      const entry = {
+        id: "j_" + Date.now(),
+        date,
+        title,
+        mood,
+        content,
+        createdAt: new Date().toISOString()
+      };
+
+      appState.journalEntries.unshift(entry);
+      await encryptAndSaveJournal();
+
+      document.getElementById("journalTitle").value = "";
+      document.getElementById("journalContent").value = "";
+
+      showToast("Journal entry safely saved & encrypted! ✨");
+      renderJournalEntries();
+    }
+
+    async function deleteJournalEntry(id) {
+      if (!confirm("Are you sure you want to delete this journal entry?")) return;
+      appState.journalEntries = appState.journalEntries.filter(j => j.id !== id);
+      await encryptAndSaveJournal();
+      renderJournalEntries();
+      showToast("Entry deleted.");
+    }
+
+    function renderJournalEntries() {
+      const container = document.getElementById("journalEntriesList");
+      const countLabel = document.getElementById("journalEntriesCount");
+      countLabel.textContent = `${appState.journalEntries.length} entries`;
+
+      if (appState.journalEntries.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <div style="font-weight: 600; margin-bottom: 4px;">No journal entries yet</div>
+            <div style="font-size: 0.85rem;">Write your first private entry above! It's protected and encrypted.</div>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = appState.journalEntries.map(j => {
+        return `
+          <div class="journal-entry-card">
+            <div class="journal-header-info">
+              <div>
+                <span class="journal-date-badge">${formatDateDisplay(j.date)}</span>
+                <span style="font-size: 0.85rem; color: var(--text-muted); margin-left: 8px;">${escapeHtml(j.mood)}</span>
+                <h3 style="font-size: 1.15rem; font-weight: 700; margin-top: 6px; color: var(--text-main);">${escapeHtml(j.title)}</h3>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="deleteJournalEntry('${j.id}')" title="Delete Entry" style="color: #ef4444; border-color: transparent;">
+                🗑️
+              </button>
+            </div>
+            <div class="journal-text">${escapeHtml(j.content)}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    // ============================================================
+    // 5. BACKUP & RESTORE FUNCTIONS
+    // ============================================================
+    function exportDataBackup() {
+      const backupData = {
+        version: "1.0",
+        exportedAt: new Date().toISOString(),
+        workouts: appState.workouts,
+        meals: appState.meals,
+        goals: appState.goals,
+        notes: appState.notes,
+        settings: appState.settings,
+        // Also export encrypted journal so her locked entries are never lost
+        journalSalt: localStorage.getItem(STORAGE_KEYS.JOURNAL_SALT),
+        journalHash: localStorage.getItem(STORAGE_KEYS.JOURNAL_HASH),
+        journalEntries: localStorage.getItem(STORAGE_KEYS.JOURNAL_ENTRIES)
+      };
+
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupData, null, 2));
+      const downloadAnchor = document.createElement("a");
+      const fileName = `afnan_fitness_journal_backup_${getTodayString()}.json`;
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", fileName);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+
+      showToast("Backup exported successfully! 📁");
+    }
+
+    function importDataBackup(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        try {
+          const imported = JSON.parse(evt.target.result);
+          if (!confirm("This will merge/restore your workouts, meals, notes, and journal entries. Continue?")) return;
+
+          if (imported.workouts) {
+            appState.workouts = imported.workouts;
+            localStorage.setItem(STORAGE_KEYS.WORKOUTS, JSON.stringify(appState.workouts));
+          }
+          if (imported.meals) {
+            appState.meals = imported.meals;
+            localStorage.setItem(STORAGE_KEYS.MEALS, JSON.stringify(appState.meals));
+          }
+          if (imported.goals) {
+            appState.goals = imported.goals;
+            localStorage.setItem(STORAGE_KEYS.GOALS, JSON.stringify(appState.goals));
+          }
+          if (imported.notes) {
+            appState.notes = imported.notes;
+            localStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(appState.notes));
+          }
+          if (imported.settings) {
+            appState.settings = imported.settings;
+            localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(appState.settings));
+          }
+          if (imported.journalSalt) localStorage.setItem(STORAGE_KEYS.JOURNAL_SALT, imported.journalSalt);
+          if (imported.journalHash) localStorage.setItem(STORAGE_KEYS.JOURNAL_HASH, imported.journalHash);
+          if (imported.journalEntries) localStorage.setItem(STORAGE_KEYS.JOURNAL_ENTRIES, imported.journalEntries);
+
+          applySettings();
+          renderGymHistory();
+          renderNutritionView();
+          renderNotes();
+          checkJournalLockStatus();
+
+          showToast("Data restored successfully! ✨");
+        } catch (err) {
+          alert("Error reading backup file: " + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // Safety string escaper
+    function escapeHtml(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
