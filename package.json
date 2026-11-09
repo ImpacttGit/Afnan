@@ -17,8 +17,18 @@
       "category": "public.app-category.lifestyle",
       "icon": "build/icon.icns",
       "target": [
-        "dmg",
-        "zip"
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "universal"
+          ]
+        }
       ],
       "hardenedRuntime": false,
       "gatekeeperAssess": false
